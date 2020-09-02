@@ -26,34 +26,54 @@
 	<a class="skip-link screen-reader-text" href="#primary"><?php esc_html_e( 'Skip to content', 'esperanza' ); ?></a>
 
 	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$esperanza_description = get_bloginfo( 'description', 'display' );
-			if ( $esperanza_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $esperanza_description; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
-
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'esperanza' ); ?></button>
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'menu-1',
-					'menu_id'        => 'primary-menu',
-				)
-			);
-			?>
-		</nav><!-- #site-navigation -->
+		<div class="esperanza-contactus">
+			<div class="container">
+				<div class="row">
+					<div class="col">
+					<ul class="list-inline text-left">
+						<li class="list-inline-item">Lorem ipsum</li>
+						<li class="list-inline-item">Phasellus iaculis</li>
+					</ul>
+					</div>
+					<div class="col">
+						<ul class=" text-right">
+							<li class="list-inline-item">Lorem ipsum</li>
+							<li class="list-inline-item">Phasellus iaculis</li>
+							<li class="list-inline-item">Lorem ipsum</li>
+							<li class="list-inline-item">Phasellus iaculis</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="esperanza-navbar">
+			<div class="container">
+				<nav class="navbar navbar-expand-md navbar-light bg-white">
+					<?php
+						$custom_logo_id = get_theme_mod( 'custom_logo' );
+						$image = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+						
+					?>
+					<a class="navbar-brand" href="<?php echo esc_url( home_url( '/' ) ); ?>"><img src="<?php echo $image[0]; ?>"/></a>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#esperanza-nav" aria-controls="esperanza-nav" aria-expanded="false" aria-label="Toggle navigation">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<?php
+					wp_nav_menu([
+						'menu'            => 'menu-1',
+						'theme_location'  => 'menu-1',
+						'container'       => 'div',
+						'container_id'    => 'esperanza-nav',
+						'container_class' => 'collapse navbar-collapse',
+						'menu_id'         => false,
+						'menu_class'      => 'navbar-nav ml-auto mt-2 mt-lg-0',
+						'depth'           => 2,
+						'fallback_cb'     => 'bs4navwalker::fallback',
+						'walker'          => new bs4navwalker()
+					]);
+					?>
+				</nav>	
+			</div>
+		</div>
+			
 	</header><!-- #masthead -->

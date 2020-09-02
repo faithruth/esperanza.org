@@ -12,6 +12,7 @@ if ( ! defined( '_S_VERSION' ) ) {
 	define( '_S_VERSION', '1.0.0' );
 }
 
+
 if ( ! function_exists( 'esperanza_setup' ) ) :
 	/**
 	 * Sets up theme defaults and registers support for various WordPress features.
@@ -46,6 +47,10 @@ if ( ! function_exists( 'esperanza_setup' ) ) :
 		 * @link https://developer.wordpress.org/themes/functionality/featured-images-post-thumbnails/
 		 */
 		add_theme_support( 'post-thumbnails' );
+
+		require_once('bs4navwalker.php');
+
+		//register_nav_menu('menu-1', esc_html__( 'Primary', 'esperanza' ));
 
 		// This theme uses wp_nav_menu() in one location.
 		register_nav_menus(
@@ -142,9 +147,17 @@ add_action( 'widgets_init', 'esperanza_widgets_init' );
 function esperanza_scripts() {
 	wp_enqueue_style( 'esperanza-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'esperanza-style', 'rtl', 'replace' );
+	wp_enqueue_style('slick-css', get_template_directory_uri() . '/assets/css/slick.css');
+	wp_enqueue_style('slick-theme-css', get_template_directory_uri() . '/assets/css/owl.carousel.min.css');
+	wp_enqueue_style('slick-theme-css', get_template_directory_uri() . '/assets/css/owl.carousel.default.min.css');
+	wp_enqueue_style('bootstrap-css', get_template_directory_uri() . '/assets/css/bootstrap.min.css');
+	wp_enqueue_style( 'font-awesome', 'https://use.fontawesome.com/releases/v5.7.1/css/all.css' );
+	wp_enqueue_style('esperanza-css', get_template_directory_uri() . '/assets/css/styles.css');
 
 	wp_enqueue_script( 'esperanza-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
-
+	wp_enqueue_script('slick-js', get_template_directory_uri() . '/assets/js/owl.carousel.min.js', array('jquery'));
+	wp_enqueue_script('bootstrap-js', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array('jquery'));
+	wp_enqueue_script('esperanza-js', get_template_directory_uri() . '/assets/js/scripts.js', array('slick-js'));
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
