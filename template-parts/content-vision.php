@@ -14,12 +14,12 @@
 </div>
 
 <div class="container">
-    <div class="esperanza-about card-deck">
+    <div class="esperanza-about card-deck row">
     <?php
     $about_page = get_page_by_path( 'about' );
     $args = array(
         'post_type'      => 'page',
-        'posts_per_page' => -1,
+        'posts_per_page' => 3,
         'post_parent'    => $about_page->ID,
         'order'          => 'ASC',
         'orderby'        => 'menu_order'
@@ -30,11 +30,11 @@
 
         <?php while ( $pages->have_posts() ) : $pages->the_post(); ?>
     
-            <div id="parent-<?php the_ID(); ?>" class="parent-page">
+            <div id="parent-<?php the_ID(); ?>" class="parent-page col-md-4">
                 <div class="card rounded-0 border-purple bg-light mb-3">
                     <div class="card-body text-center">
                         <h5 class="card-title"><?php the_title(); ?></h5>
-                        <p class="card-text"><?php echo wp_trim_words( the_content(), 40, '...' ); ?></p>
+                        <p class="card-text"><?php echo wp_trim_words( get_the_content(), 20, '...' ); ?></p>
                     </div>
                     <div class="card-body-overlay">
                             <a href="<?php the_permalink(); ?>" class="">Read More</a>

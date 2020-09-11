@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="owl-carousel owl-theme esperanza-slider shadow">
+    <div class="esperanza-slider owl-carousel owl-theme">
     <?php
     $services_page = get_page_by_path( 'services' );
     $args = array(
@@ -11,7 +11,6 @@
     );
 
     
-     error_log(print_r( $services_page->ID, true));
     $pages = new WP_Query( $args );
     if ( $pages->have_posts() ) : ?>
 
@@ -25,8 +24,8 @@
                 <div class="esperanza-slider__description ">
                     <div class="text-wrapper text-left">
                         <h3 class="esperanza-slider__title"><?php the_title(); ?></h3>
-                        <p class="esperanza-slider__content welcomePrompt"><?php echo wp_trim_words( the_content(), 25, '...' ); ?></p>
-                        <a href="<?php the_permalink(); ?>" class="">Read More</a>
+                        <p class="esperanza-slider__content welcomePrompt"><?php echo wp_trim_words( get_the_content(), 25, '...' ) ?></p>
+                        <a href="<?php the_permalink(); ?>" class="read-more">Read More</a>
                     </div>
                 </div>
             </div>

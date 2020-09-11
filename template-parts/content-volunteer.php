@@ -9,7 +9,7 @@ $args = array(
 $args['tax_query'] = array(
 array(
     'taxonomy' => 'images',
-    'terms' => array( 'banner' ),
+    'terms' => array( 'volunteer' ),
     'field' => 'slug',
 ),
 );
@@ -21,7 +21,8 @@ $volunteer_images = get_posts( $args );
             <div class="esperanza-gallery row">
             <?php foreach($volunteer_images as $volunteer_image) {?>
                 <div class="col-md-6">
-                <?php echo wp_get_attachment_image($volunteer_image->ID, 'full'); ?>
+                    <a href="<?php echo wp_get_attachment_url($volunteer_image->ID); ?>" class="gallery_image gallery d-flex align-items-center" style="background-image: url(<?php echo wp_get_attachment_url($volunteer_image->ID); ?>);">
+                    </a>
                 </div>
             <?php }?>
 			</div>
@@ -29,7 +30,7 @@ $volunteer_images = get_posts( $args );
         <div class="col-md-6">
             <div class="esperanza-volunterr-details text-center">
                 <div class="text-wrapper">
-                    <h3 >Volunteer with us</h3>
+                    <h2>Volunteer with us</h2>
                     <p>Volunteers from around the world are called upon to join Esperanza Foundation in cause of helping the most vulnerable people in the societies of Nebbi -Uganda.</p>
                     <a href="https://www.givingway.com/organization/esperanza-foundation/?context=apply" class="esperanza-btn-dark">Join us</a>
                 </div>

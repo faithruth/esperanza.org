@@ -29,18 +29,33 @@
 		<div class="esperanza-contactus">
 			<div class="container">
 				<div class="row">
-					<div class="col">
+					<div class="col-md-6">
 					<ul class="list-inline text-left">
-						<li class="list-inline-item">Lorem ipsum</li>
-						<li class="list-inline-item">Phasellus iaculis</li>
+						<li class="list-inline-item">
+						<i class="far fa-envelope"></i>
+							info@esperanzaug.org
+						</li>
+						<li class="list-inline-item">
+							<i class="fas fa-mobile-alt"></i>
+							+256 775 617913 | +256 785 933196
+
+						</li>
 					</ul>
 					</div>
-					<div class="col">
+					<div class="col-md-6">
 						<ul class=" text-right">
-							<li class="list-inline-item">Lorem ipsum</li>
-							<li class="list-inline-item">Phasellus iaculis</li>
-							<li class="list-inline-item">Lorem ipsum</li>
-							<li class="list-inline-item">Phasellus iaculis</li>
+							<li class="list-inline-item">
+								<a href=""><i class="fab fa-facebook-square"></i></a>
+							</li>
+							<li class="list-inline-item">
+								<a href=""><i class="fab fa-twitter-square"></i></a>
+							</li>
+							<li class="list-inline-item">
+								<a href=""><i class="fab fa-instagram"></i></a>
+							</li>
+							<li class="list-inline-item">
+								<a href=""><i class="fab fa-youtube-square"></i></a>
+							</li>
 						</ul>
 					</div>
 				</div>

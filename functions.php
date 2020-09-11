@@ -191,3 +191,19 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
+function get_breadcrumb() {
+	echo '<div class="breadcrumb">';
+	echo '<a href="'.home_url().'" rel="nofollow">Home </a>';
+	if (is_category() || is_single()){
+		echo "  »  ";
+		the_category ();
+			if (is_single()) {
+				echo "  »  ";
+				the_title(' <span class="active"> ', '</span>');
+			}
+	} elseif (is_page()) {
+			echo "  » ";
+			echo the_title();
+	} 
+	echo '</div>';
+}
